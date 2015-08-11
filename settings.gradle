@@ -1,2 +1,1 @@
-include ':app', ':KoushBoilerplate'
-project(':KoushBoilerplate').projectDir = new File('E:\\dev\\workspaceAndroid\\Boilerplate\\app')
+include ':app'
