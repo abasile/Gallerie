@@ -110,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new CheeseListFragment(), "Category 1");
-        adapter.addFragment(new CheeseListFragment(), "Category 2");
+        Bundle bundle = new Bundle();
+        bundle.putString(GalleryFragment.PROVIDER_KEY, "Gallery");
+        adapter.addFragment(new GalleryFragment(), bundle,"Category 2");
         adapter.addFragment(new CheeseListFragment(), "Category 3");
         viewPager.setAdapter(adapter);
     }
@@ -147,6 +149,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void addFragment(Fragment fragment, String title) {
+            mFragments.add(fragment);
+            mFragmentTitles.add(title);
+        }
+
+        public void addFragment(Fragment fragment, Bundle arguments, String title) {
+            fragment.setArguments(arguments);
             mFragments.add(fragment);
             mFragmentTitles.add(title);
         }
